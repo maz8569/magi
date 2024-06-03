@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleParent: {fileID: 2719963502318587190, guid: 631685fbaa7239f4389d222205967bcd, type: 3}
-  size: {x: 12, y: 5, z: 12}
+  size: {x: 15, y: 4, z: 15}
 --- !u!4 &1690525552
 Transform:
   m_ObjectHideFlags: 0
