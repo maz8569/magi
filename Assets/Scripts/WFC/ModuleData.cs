@@ -11,12 +11,12 @@ public class ModuleData : MonoBehaviour
     {
         if (modulesParent.transform.childCount > 0)
         {
-            foreach (Transform child in modulesParent.transform)
+            for (var i = modulesParent.transform.childCount - 1; i >= 0; i--)
             {
 #if UNITY_EDITOR
-                DestroyImmediate(child.gameObject);
+                DestroyImmediate(modulesParent.transform.GetChild(i).gameObject);
 #else
-			    Destroy(child.GameObject);
+                Destroy(modulesParent.transform.GetChild(i).gameObject); 
 #endif
             }
         }
