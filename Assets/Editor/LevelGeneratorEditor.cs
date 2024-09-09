@@ -11,13 +11,9 @@ public class LevelGeneratorEditor : Editor
 
         LevelGenerator levelGenerator = (LevelGenerator)target;
 
-        if (GUILayout.Button("Start evolving"))
-        {
-            levelGenerator.StartEvolving();
-        }
-
         if (GUILayout.Button("Show level"))
         {
+            levelGenerator.StopExecution();
             levelGenerator.VisualizeMap();
         }
 

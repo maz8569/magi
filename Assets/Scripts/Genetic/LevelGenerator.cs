@@ -9,9 +9,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.Mathematics;
 using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
-using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -25,12 +23,22 @@ public class LevelGenerator : MonoBehaviour
 
     private Pathfinding pathfinding;
     public List<int2> unwalkable = new();
+    public IList<PureSlot> slots;
+
+    public List<Module> availableModules = new();
+
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < moduleParent.childCount; i++)
+        {
+            availableModules.Add(moduleParent.GetChild(i).GetComponent<Module>());
+            availableModules[i].CheckWalkability();
+        }
+
         pathfinding = GetComponent<Pathfinding>();
 
-        var chromosome = new PureChromosome(moduleParent, size.x * size.y * size.z);
+        var chromosome = new PureChromosome(availableModules, size.x * size.y * size.z);
         var fitness = new PureFitness(moduleParent.GetChild(2), size);
         fitness.Slots[1].module = moduleParent.GetChild(0).GetComponent<Module>();
 
@@ -53,22 +61,26 @@ public class LevelGenerator : MonoBehaviour
         };
 
         // Everty time a generation ends, we log the best solution.
-        //m_ga.GenerationRan += delegate
-        //{
-        //    var distance = ((PureChromosome)m_ga.BestChromosome).Distance;
-        //    Debug.Log($"Generation: {m_ga.GenerationsNumber} - Distance: ${distance}");
-        //};
+        m_ga.GenerationRan += delegate
+        {
+            var enclosement = ((PureChromosome)m_ga.BestChromosome).Enclosement;
+            Debug.Log($"Generation: {m_ga.GenerationsNumber} - Enclosement: ${enclosement}");
+        };
+
+        slots = ((PureFitness)m_ga.Fitness).Slots;
 
         VisualizeMap();
-        var slots = ((PureFitness)m_ga.Fitness).Slots;
+
         for (int i = 0; i < slots.Count; i++)
         {
             var slot = slots[i];
             if (slot == null) continue;
             if (slot.position.y > 0) continue;
 
-            if (slot.module.name == "Empty") unwalkable.Add(new int2(slot.position.x, slot.position.z));
+            if (slot.module.isWalkable) unwalkable.Add(new int2(slot.position.x, slot.position.z));
         }
+
+        //StartEvolving();
     }
 
     public void StartEvolving()
@@ -82,8 +94,6 @@ public class LevelGenerator : MonoBehaviour
     public void VisualizeMap()
     {
         ClearMap();
-
-        var slots = ((PureFitness)m_ga.Fitness).Slots;
 
         for (int i = 0; i < slots.Count; i++)
         {
@@ -111,13 +121,33 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    private void StopExecution()
+    public void StopExecution()
     {
         if (!startedEvolution) return;
         // When the script is destroyed we stop the genetic algorithm and abort its thread too.
         m_ga.Stop();
         m_gaThread.Abort();
         startedEvolution = false;
+
+        PureChromosome fittest = m_ga.Population.CurrentGeneration.BestChromosome as PureChromosome;
+        if (fittest != null)
+        {
+            for (int i = 0; slots.Count > i; i++)
+            {
+                slots[i].module = (Module)fittest.GetGene(i).Value;
+            } 
+        }
+
+        unwalkable = new();
+
+        for (int i = 0; i < slots.Count; i++)
+        {
+            var slot = slots[i];
+            if (slot == null) continue;
+            if (slot.position.y > 0) continue;
+
+            if (slot.module.isWalkable) unwalkable.Add(new int2(slot.position.x, slot.position.z));
+        }
     }
 
     private void OnDestroy()

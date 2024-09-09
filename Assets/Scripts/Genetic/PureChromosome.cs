@@ -1,34 +1,37 @@
 using UnityEngine;
 using GeneticSharp.Domain.Chromosomes;
 using GeneticSharp.Domain.Randomizations;
+using System.Collections.Generic;
 
 public class PureChromosome : ChromosomeBase
 {
-    private Transform moduleParent;
+    private List<Module> modules;
     private int mapSize;
 
-    public PureChromosome(Transform moduleParent, int mapSize) : base(mapSize)
-    {
-        this.moduleParent = moduleParent;
-        this.mapSize = mapSize;
+    public double Enclosement { get; internal set; }
 
-        var moduleIndexes = RandomizationProvider.Current.GetInts(mapSize, 0, moduleParent.childCount);
+    public PureChromosome(List<Module> modules, int mapSize) : base(mapSize)
+    {
+        this.modules = modules;
+        this.mapSize = mapSize;   
+
+        var moduleIndexes = RandomizationProvider.Current.GetInts(mapSize, 0, modules.Count);
 
         for( int i = 0; i < moduleIndexes.Length; i++)
         {
-            ReplaceGene(i, new Gene(moduleParent.GetChild(i)));
+            ReplaceGene(i, new Gene(modules[i]));
         }
 
     }
 
     public override IChromosome CreateNew()
     {
-        return new PureChromosome(moduleParent, mapSize);
+        return new PureChromosome(modules, mapSize);
     }
 
     public override Gene GenerateGene(int geneIndex)
     {
-        return new Gene(moduleParent.GetChild(RandomizationProvider.Current.GetInt(0, moduleParent.childCount)));
+        return new Gene(modules[RandomizationProvider.Current.GetInt(0, modules.Count)]);
     }
 
 

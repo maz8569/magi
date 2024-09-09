@@ -10,6 +10,7 @@ public class Module : MonoBehaviour
     public List<Module> backwardNeighbours;
     public List<Module> upNeighbours;
     public List<Module> downNeighbours;
+    public bool isWalkable;
 
     public List<Module> GetNeighboursFromDirection(Vector3Int direction)
     {
@@ -27,5 +28,10 @@ public class Module : MonoBehaviour
     public override string ToString()
     {
         return name;
+    }
+
+    public void CheckWalkability()
+    {
+        isWalkable = name == "Empty";
     }
 }
