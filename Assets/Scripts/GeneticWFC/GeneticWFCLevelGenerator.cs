@@ -68,13 +68,13 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
         //CheckEntropy(slots);
         //StartCoroutine(VisualizeMap(slots));
 
-
+       
         var chromosome = new WFCChromosome(modules.Count);
         var population = new Population(50, 100, chromosome);
 
         var selection = new EliteSelection();
         var crossover = new UniformCrossover(0.5f);
-        var mutation = new ReverseSequenceMutation();
+        var mutation = new WFCMutation();
 
         var fitness = new FuncFitness((c) =>
         {
@@ -128,7 +128,7 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
         m_ga.GenerationRan += delegate
         {
             var novelty = ((WFCChromosome)m_ga.BestChromosome).Novelty;
-            Debug.Log($"Generation: {m_ga.GenerationsNumber} - Novelty: ${novelty}");
+            Debug.Log($"Generation: {m_ga.GenerationsNumber} - Novelty: {novelty} - Fitness: {m_ga.BestChromosome.Fitness}");
         };
 
         m_ga.TerminationReached += OnTermination;
@@ -151,7 +151,15 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
         }
 
         modules = newModules;
+        startedEvolution = false;
         canRegenerate = true;
+    }
+
+    public void RestartEvo()
+    {
+        m_gaThread = new Thread(() => m_ga.Start());
+        m_gaThread.Start();
+        startedEvolution = true;
     }
 
     public void CheckEntropy(List<Slot> slots)
@@ -251,6 +259,7 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
 
     private IEnumerator VisualizeMap(List<Slot> slots)
     {
+        unwalkable = new();
         foreach (var slotToCollapse in slots)
         {
             if (slotToCollapse.modules[0].isWalkable)
@@ -349,7 +358,6 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
 
         }
         float result = (float)novelty / walkablecount;
-        Debug.Log(result);
         return result;
     }
 
@@ -403,5 +411,10 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
     private void OnDestroy()
     {
         StopExecution();
+    }
+
+    public void SetYSize(int y)
+    {
+        size.y = y;
     }
 }

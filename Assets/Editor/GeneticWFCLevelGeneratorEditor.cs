@@ -15,7 +15,7 @@ public class GeneticWFCLevelGeneratorEditor : Editor
 
         if (GUILayout.Button("Novelty"))
         {
-            geneticWFCLevelGenerator.CheckNovelty(geneticWFCLevelGenerator.slots);
+            Debug.Log(geneticWFCLevelGenerator.CheckNovelty(geneticWFCLevelGenerator.slots));
         }
 
 #if UNITY_EDITOR
