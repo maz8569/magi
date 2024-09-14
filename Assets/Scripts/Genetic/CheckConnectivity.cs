@@ -9,7 +9,7 @@ public static class CheckConnectivity
         int numberOfWalkable = gridX * gridY - unwalkable.Length;
         int2 gridSize = new int2(gridX, gridY);
 
-        NativeArray<ConnectivityNode> pathNodeArray = new NativeArray<ConnectivityNode>(gridSize.x * gridSize.y, Allocator.Temp);
+        NativeArray<ConnectivityNode> pathNodeArray = new NativeArray<ConnectivityNode>(gridSize.x * gridSize.y, Allocator.TempJob);
 
         for (int x = 0; x < gridSize.x; x++)
         {
@@ -36,7 +36,7 @@ public static class CheckConnectivity
             pathNodeArray[CalculateIndex(unwalkable[i].x, unwalkable[i].y, gridSize.x)] = unwalkablePathNode;
         }
 
-        NativeArray<int2> neighbourOffsetArray = new NativeArray<int2>(8, Allocator.Temp);
+        NativeArray<int2> neighbourOffsetArray = new NativeArray<int2>(8, Allocator.TempJob);
         neighbourOffsetArray[0] = new int2(-1, 0);
         neighbourOffsetArray[1] = new int2(1, 0);
         neighbourOffsetArray[2] = new int2(0, -1);
@@ -49,8 +49,8 @@ public static class CheckConnectivity
         ConnectivityNode startNode = pathNodeArray[CalculateIndex(startPosition.x, startPosition.y, gridSize.x)];
         pathNodeArray[startNode.index] = startNode;
 
-        NativeList<int> openList = new NativeList<int>(Allocator.Temp);
-        NativeList<int> closedList = new NativeList<int>(Allocator.Temp);
+        NativeList<int> openList = new NativeList<int>(Allocator.TempJob);
+        NativeList<int> closedList = new NativeList<int>(Allocator.TempJob);
 
         openList.Add(startNode.index);
 

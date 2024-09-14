@@ -29,6 +29,7 @@ public class ModuleData : MonoBehaviour
             Prototype childPro = child.GetComponent<Prototype>();
             temp.GetComponent<MeshFilter>().mesh = childPro.GetMesh();
             temp.GetComponent<MeshRenderer>().materials = child.GetChild(0).GetComponent<MeshRenderer>().sharedMaterials;
+            temp.GetComponent<Module>().isWalkable = childPro.isWalkable;
         }
 
         for (int i = 0; i < transform.childCount - 1; i++)

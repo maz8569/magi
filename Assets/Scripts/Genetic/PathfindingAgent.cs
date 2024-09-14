@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class PathfindingAgent : MonoBehaviour
 {
-    [SerializeField] private LevelGenerator LevelGenerator;
+    [SerializeField] private GameObject LevelGenerator;
     [Header("Movement parameters")]
     [SerializeField]
     private float moveSpeed = 12f;
@@ -40,7 +40,7 @@ public class PathfindingAgent : MonoBehaviour
         if (positions?.Count > 0) start = new int2((int)(positions[positions.Count - 1].x / 2), (int)(positions[positions.Count - 1].z / 2));
         else start = new int2((int)(transform.position.x / 2), (int)(transform.position.z / 2));
         int2 end = (int2)data;
-        positions = LevelGenerator.FindPath(start, end);
+        positions = LevelGenerator.GetComponent<ILevelGenerator>().FindPath(start, end);
         if(positions.Count > 0 )
         {
             foreach( var position in positions)

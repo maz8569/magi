@@ -38,6 +38,7 @@ public class PureChromosome : ChromosomeBase
     public override IChromosome Clone()
     {
         var clone = base.Clone() as PureChromosome;
+        clone.Enclosement = Enclosement;
 
         return clone;
     }

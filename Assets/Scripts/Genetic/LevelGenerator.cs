@@ -11,7 +11,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LevelGenerator : MonoBehaviour
+public class LevelGenerator : MonoBehaviour, ILevelGenerator
 {
     private GeneticAlgorithm m_ga;
     private Thread m_gaThread;
@@ -33,7 +33,6 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 0; i < moduleParent.childCount; i++)
         {
             availableModules.Add(moduleParent.GetChild(i).GetComponent<Module>());
-            availableModules[i].CheckWalkability();
         }
 
         pathfinding = GetComponent<Pathfinding>();
@@ -77,10 +76,10 @@ public class LevelGenerator : MonoBehaviour
             if (slot == null) continue;
             if (slot.position.y > 0) continue;
 
-            if (slot.module.isWalkable) unwalkable.Add(new int2(slot.position.x, slot.position.z));
+            if (!slot.module.isWalkable) unwalkable.Add(new int2(slot.position.x, slot.position.z));
         }
 
-        //StartEvolving();
+        StartEvolving();
     }
 
     public void StartEvolving()
@@ -146,8 +145,33 @@ public class LevelGenerator : MonoBehaviour
             if (slot == null) continue;
             if (slot.position.y > 0) continue;
 
+            if (!slot.module.isWalkable) unwalkable.Add(new int2(slot.position.x, slot.position.z));
+        }
+    }
+
+    private void Update()
+    {
+        PureChromosome fittest = m_ga.Population.CurrentGeneration.BestChromosome as PureChromosome;
+        if (fittest != null)
+        {
+            for (int i = 0; slots.Count > i; i++)
+            {
+                slots[i].module = (Module)fittest.GetGene(i).Value;
+            }
+        }
+
+        unwalkable = new();
+
+        for (int i = 0; i < slots.Count; i++)
+        {
+            var slot = slots[i];
+            if (slot == null) continue;
+            if (slot.position.y > 0) continue;
+
             if (slot.module.isWalkable) unwalkable.Add(new int2(slot.position.x, slot.position.z));
         }
+
+        VisualizeMap();
     }
 
     private void OnDestroy()

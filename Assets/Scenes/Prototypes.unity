@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -405,6 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -475,6 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -1292,6 +1295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -1528,6 +1532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -1681,6 +1686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -1834,6 +1840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -1904,6 +1911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -2057,6 +2065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -2127,6 +2136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -2280,6 +2290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -2519,6 +2530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -2672,6 +2684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -2825,6 +2838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -2895,6 +2909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -2965,6 +2980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -3035,6 +3051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -3354,6 +3371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -3590,6 +3608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -3743,6 +3762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -3896,6 +3916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -4052,6 +4073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -4288,6 +4310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -4358,6 +4381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -4428,6 +4452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -4581,6 +4606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -4734,6 +4760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -4887,6 +4914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -4957,6 +4985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -5110,6 +5139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -5346,6 +5376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -5665,6 +5696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -5735,6 +5767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -5805,6 +5838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -5958,6 +5992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -6194,6 +6229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -6347,6 +6383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -6417,6 +6454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -6487,6 +6525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -6557,6 +6596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -6627,6 +6667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -6697,6 +6738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -6767,6 +6809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -7086,6 +7129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -7322,6 +7366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -7486,6 +7531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -7722,6 +7768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -8041,6 +8088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -8111,6 +8159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -8181,6 +8230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -8334,6 +8384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -8570,6 +8621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -8640,6 +8692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -8959,6 +9012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -9278,6 +9332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -9514,6 +9569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -9667,6 +9723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -9737,6 +9794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -9890,6 +9948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -9960,6 +10019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -10030,6 +10090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -10183,6 +10244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -10253,6 +10315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -10323,6 +10386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 0
   Left:
     Connector: -2
     Symmetric: 1
@@ -10393,6 +10457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -10463,6 +10528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -10631,6 +10697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -10793,6 +10860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -11278,6 +11346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -11514,6 +11583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -11750,6 +11820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -11820,6 +11891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -11973,6 +12045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -12126,6 +12199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -12279,6 +12353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -12349,6 +12424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -12502,6 +12578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -12572,6 +12649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -12642,6 +12720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -12712,6 +12791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -12782,6 +12862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -12852,6 +12933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -13337,6 +13419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -13573,6 +13656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -13809,6 +13893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -14045,6 +14130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -14115,6 +14201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -14185,6 +14272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -14255,6 +14343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -14325,6 +14414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -14561,6 +14651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -14631,6 +14722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -14784,6 +14876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -15020,6 +15113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -15090,6 +15184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -15326,6 +15421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -15479,6 +15575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -15632,6 +15729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -15702,6 +15800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -15938,6 +16037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -16008,6 +16108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -16161,6 +16262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -16231,6 +16333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -16301,6 +16404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -16454,6 +16558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -16524,6 +16629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -16594,6 +16700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -16664,6 +16771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -17066,6 +17174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -17219,6 +17328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -17289,6 +17399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -17442,6 +17553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 2
     Symmetric: 0
@@ -17512,6 +17624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -17748,6 +17861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -17818,6 +17932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -17888,6 +18003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -18207,6 +18323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -18692,6 +18809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -18762,6 +18880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -18998,6 +19117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -19068,6 +19188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -19138,6 +19259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 3
     Symmetric: 0
@@ -19374,6 +19496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 0
   Left:
     Connector: -1
     Symmetric: 1
@@ -19776,6 +19899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -19929,6 +20053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1
@@ -20082,6 +20207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -20152,6 +20278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -20222,6 +20349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -2
     Symmetric: 1
@@ -20375,6 +20503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -20445,6 +20574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: -1
     Symmetric: 1
@@ -20515,6 +20645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 4
     Symmetric: 0
@@ -20585,6 +20716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Probability: 1
+  isWalkable: 1
   Left:
     Connector: 0
     Symmetric: 1

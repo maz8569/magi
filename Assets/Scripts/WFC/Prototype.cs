@@ -85,6 +85,7 @@ public class Prototype : MonoBehaviour
     }
 
     public float Probability = 1.0f;
+    public bool isWalkable = true;
     public HorizontalFaceDetails Left;
     public VerticalFaceDetails Down;
     public HorizontalFaceDetails Backward;

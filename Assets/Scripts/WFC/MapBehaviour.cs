@@ -2,16 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 
-public class MapBehaviour : MonoBehaviour
+public class MapBehaviour : MonoBehaviour, ILevelGenerator
 {
     [SerializeField] private Transform moduleParent;
     [SerializeField] private Vector3Int size;
+    [SerializeField] private GameObject player;
+
     private List<Slot> slots;
+    private Module spawnPoint = null;
+    private Pathfinding pathfinding;
+    public List<int2> unwalkable = new();
 
     private void Awake()
     {
+        pathfinding = GetComponent<Pathfinding>();
         List<Module> modules = new();
 
         foreach (Transform module in moduleParent)
@@ -64,8 +71,6 @@ public class MapBehaviour : MonoBehaviour
 
         Module selectedModule = slotToCollapse.modules[UnityEngine.Random.Range(0, slotToCollapse.modules.Length)];
         slotToCollapse.modules = new Module[] { selectedModule };
-
-        //if (!slotToCollapse.modules[0].name.Equals("Empty")) Instantiate(slotToCollapse.modules[0], slotToCollapse.position * 2, slotToCollapse.modules[0].transform.rotation, transform);
 
         UpdateGeneration(slotToCollapse);
 
@@ -139,12 +144,55 @@ public class MapBehaviour : MonoBehaviour
     {
         foreach (var slotToCollapse in slots)
         {
-            if (!slotToCollapse.modules[0].name.Equals("Empty"))
+            if (slotToCollapse.modules[0].isWalkable)
             {
-                Instantiate(slotToCollapse.modules[0], slotToCollapse.position * 2, slotToCollapse.modules[0].transform.rotation, transform);
+
+                var module = Instantiate(slotToCollapse.modules[0], slotToCollapse.position * 2, slotToCollapse.modules[0].transform.rotation, transform);
+                BoxCollider col = module.gameObject.AddComponent<BoxCollider>();
+                col.size = new Vector3(2, 2, 2);
+
+                if (spawnPoint == null) spawnPoint = module;
+
                 yield return new WaitForSeconds(0.025f);
             }
+            else
+            {
+                if(slotToCollapse.position.y == 0) {
+                    unwalkable.Add(new int2(slotToCollapse.position.x, slotToCollapse.position.z));
+                }
+            }
+        }
+
+        SpawnPlayer();
+    }
+
+    public List<Vector3> FindPath(int2 startPos, int2 endPos)
+    {
+        if (pathfinding != null)
+        {
+            return ChangeToListVector(pathfinding.FindPath(size.x, size.z, startPos, endPos, unwalkable.ToArray()));
+        }
+        else
+        {
+            return new List<Vector3>();
         }
     }
 
+    private List<Vector3> ChangeToListVector(List<int2> originList)
+    {
+        List<Vector3> result = new List<Vector3>();
+
+        for (int i = 0; i < originList.Count - 1; i++)
+        {
+            result.Add(new Vector3(originList[i].x * 2, 0, originList[i].y * 2));
+        }
+        result.Reverse();
+
+        return result;
+    }
+
+    private void SpawnPlayer()
+    {
+        player.transform.position = spawnPoint.transform.position;
+    }
 }
