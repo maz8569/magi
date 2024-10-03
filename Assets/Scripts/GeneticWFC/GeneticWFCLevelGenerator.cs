@@ -25,6 +25,8 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
     [SerializeField] private Transform moduleParent;
     [SerializeField] private Vector3Int size;
     [SerializeField] private GameObject player;
+    public int maxEpochs = 200;
+    public WriteToCSV WriteToCSV;
 
     public List<Slot> slots;
     private Module spawnPoint = null;
@@ -46,9 +48,9 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
 
         for (int x = 0; x < size.x; x++)
         {
-            for (int y = 0; y < size.y; y++)
+            for (int z = 0; z < size.z; z++)
             {
-                for (int z = 0; z < size.z; z++)
+                for (int y = 0; y < size.y; y++)
                 {
                     if (x == 0 || x == size.x - 1 || z == 0 || z == size.z - 1)
                     {
@@ -67,7 +69,8 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
     {
         //CheckEntropy(slots);
         //StartCoroutine(VisualizeMap(slots));
-
+        WriteToCSV = GetComponent<WriteToCSV>();
+        WriteToCSV.StartCSV();
        
         var chromosome = new WFCChromosome(modules.Count);
         var population = new Population(50, 100, chromosome);
@@ -91,9 +94,9 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
 
             for (int x = 0; x < size.x; x++)
             {
-                for (int y = 0; y < size.y; y++)
+                for (int z = 0; z < size.z; z++)
                 {
-                    for (int z = 0; z < size.z; z++)
+                    for (int y = 0; y < size.y; y++)
                     {
                         if (x == 0 || x == size.x - 1 || z == 0 || z == size.z - 1)
                         {
@@ -114,8 +117,7 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
         });
 
         m_ga = new GeneticAlgorithm(population, fitness, selection, crossover, mutation);
-        //m_ga.Termination = new FitnessStagnationTermination(100);
-        m_ga.Termination = new OrTermination(new GenerationNumberTermination(150), new FitnessThresholdTermination(0.97f));
+        m_ga.Termination = new OrTermination(new GenerationNumberTermination(maxEpochs), new FitnessThresholdTermination(0.97f));
 
         // The fitness evaluation of whole population will be running on parallel.
         m_ga.TaskExecutor = new ParallelTaskExecutor
@@ -128,6 +130,7 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
         m_ga.GenerationRan += delegate
         {
             var novelty = ((WFCChromosome)m_ga.BestChromosome).Novelty;
+            WriteToCSV.WriteLineCSV(novelty, (float)m_ga.BestChromosome.Fitness.Value);
             Debug.Log($"Generation: {m_ga.GenerationsNumber} - Novelty: {novelty} - Fitness: {m_ga.BestChromosome.Fitness}");
         };
 
@@ -416,5 +419,15 @@ public class GeneticWFCLevelGenerator : MonoBehaviour, ILevelGenerator
     public void SetYSize(int y)
     {
         size.y = y;
+    }
+
+    public void SetXSize(int x)
+    {
+        size.x = x;
+    }
+
+    public void SetZSize(int z)
+    {
+        size.z = z;
     }
 }

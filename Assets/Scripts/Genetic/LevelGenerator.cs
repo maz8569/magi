@@ -1,5 +1,6 @@
 using GeneticSharp.Domain;
 using GeneticSharp.Domain.Crossovers;
+using GeneticSharp.Domain.Fitnesses;
 using GeneticSharp.Domain.Mutations;
 using GeneticSharp.Domain.Populations;
 using GeneticSharp.Domain.Selections;
@@ -26,31 +27,59 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
     public IList<PureSlot> slots;
 
     public List<Module> availableModules = new();
+    private bool CanGenerate = false;
+
+    public int maxEpochs = 200;
+    public WriteToCSV WriteToCSV;
+    public float desiredNovelty = 0.8f;
 
     // Start is called before the first frame update
     void Start()
     {
+        slots = new List<PureSlot>();
+        WriteToCSV = GetComponent<WriteToCSV>();
+        WriteToCSV.StartCSV();
         for (int i = 0; i < moduleParent.childCount; i++)
         {
             availableModules.Add(moduleParent.GetChild(i).GetComponent<Module>());
         }
 
         pathfinding = GetComponent<Pathfinding>();
-
+        
         var chromosome = new PureChromosome(availableModules, size.x * size.y * size.z);
-        var fitness = new PureFitness(moduleParent.GetChild(2), size);
-        fitness.Slots[1].module = moduleParent.GetChild(0).GetComponent<Module>();
+        var fitness = new FuncFitness((c) =>
+        {
+            var fc = c as PureChromosome;
+            var genes = fc.GetGenes();
 
-        fitness.Slots[5].module = moduleParent.GetChild(0).GetComponent<Module>();
+            List<PureSlot> newslots = new();
+            int i = 0;
+            for (int x = 0; x < size.x; x++)
+            {
+                for (int z = 0; z < size.z; z++)
+                {
+                    for (int y = 0; y < size.y; y++)
+                    {
+                        var slot = new PureSlot { position = new Vector3Int(x, y, z), module = genes[i].Value as Module };
+                        newslots.Add(slot);
+                        i++;
+                    }
+                }
+            }
 
-        var crossover = new OrderedCrossover();
-        var mutation = new ReverseSequenceMutation();
-        var selection = new RouletteWheelSelection();
+            float novelty = 1 - Mathf.Abs(desiredNovelty - CheckNovelty(newslots));
+            fc.Novelty = CheckNovelty(newslots);
+            return novelty;
+        });
+
+        var crossover = new UniformCrossover(0.5f);
+        var mutation = new WFCMutation();
+        var selection = new EliteSelection();
 
         var population = new Population(50, 100, chromosome);
 
-        m_ga = new GeneticAlgorithm(population, fitness, selection, crossover, mutation); 
-        m_ga.Termination = new TimeEvolvingTermination(System.TimeSpan.FromHours(1));
+        m_ga = new GeneticAlgorithm(population, fitness, selection, crossover, mutation);
+        m_ga.Termination = new OrTermination(new GenerationNumberTermination(maxEpochs), new FitnessThresholdTermination(0.97f));
 
         // The fitness evaluation of whole population will be running on parallel.
         m_ga.TaskExecutor = new ParallelTaskExecutor
@@ -62,15 +91,39 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         // Everty time a generation ends, we log the best solution.
         m_ga.GenerationRan += delegate
         {
-            var enclosement = ((PureChromosome)m_ga.BestChromosome).Enclosement;
-            Debug.Log($"Generation: {m_ga.GenerationsNumber} - Enclosement: ${enclosement}");
+            var novelty = ((PureChromosome)m_ga.BestChromosome).Novelty;
+            WriteToCSV.WriteLineCSV((float)novelty, (float)m_ga.BestChromosome.Fitness.Value);
+            Debug.Log($"Generation: {m_ga.GenerationsNumber} - Enclosement: ${novelty}");
         };
 
-        slots = ((PureFitness)m_ga.Fitness).Slots;
+        m_ga.TerminationReached += OnTermination;
 
-        VisualizeMap();
+        StartEvolving();
+    }
 
-        for (int i = 0; i < slots.Count; i++)
+    private void OnTermination(object sender, System.EventArgs e)
+    {
+        startedEvolution = false;
+
+        PureChromosome fittest = m_ga.Population.CurrentGeneration.BestChromosome as PureChromosome;
+        if (fittest == null) return;
+        int i = 0;
+        for (int x = 0; x < size.x; x++)
+        {
+            for (int z = 0; z < size.z; z++)
+            {
+                for (int y = 0; y < size.y; y++)
+                {
+                    var slot = new PureSlot { position = new Vector3Int(x, y, z), module = fittest.GetGene(i).Value as Module };
+                    slots.Add(slot);
+                    i++;
+                }
+            }
+        }
+
+        unwalkable = new();
+
+        for (i = 0; i < slots.Count; i++)
         {
             var slot = slots[i];
             if (slot == null) continue;
@@ -79,7 +132,7 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
             if (!slot.module.isWalkable) unwalkable.Add(new int2(slot.position.x, slot.position.z));
         }
 
-        StartEvolving();
+        CanGenerate = true;
     }
 
     public void StartEvolving()
@@ -129,17 +182,24 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         startedEvolution = false;
 
         PureChromosome fittest = m_ga.Population.CurrentGeneration.BestChromosome as PureChromosome;
-        if (fittest != null)
+        if (fittest == null) return;
+        int i = 0;
+        for (int x = 0; x < size.x; x++)
         {
-            for (int i = 0; slots.Count > i; i++)
+            for (int z = 0; z < size.z; z++)
             {
-                slots[i].module = (Module)fittest.GetGene(i).Value;
-            } 
+                for (int y = 0; y < size.y; y++)
+                {
+                    var slot = new PureSlot { position = new Vector3Int(x, y, z), module = fittest.GetGene(i).Value as Module };
+                    slots.Add(slot);
+                    i++;
+                }
+            }
         }
 
         unwalkable = new();
 
-        for (int i = 0; i < slots.Count; i++)
+        for (i = 0; i < slots.Count; i++)
         {
             var slot = slots[i];
             if (slot == null) continue;
@@ -151,6 +211,12 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
 
     private void Update()
     {
+        if (CanGenerate)
+        {
+            VisualizeMap();
+            CanGenerate = false;
+        }
+        /*
         PureChromosome fittest = m_ga.Population.CurrentGeneration.BestChromosome as PureChromosome;
         if (fittest != null)
         {
@@ -172,6 +238,7 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         }
 
         VisualizeMap();
+        */
     }
 
     private void OnDestroy()
@@ -209,4 +276,36 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         Debug.Log(CheckConnectivity.CheckIsAll(size.x, size.z, new int2(0, 0), unwalkable.ToArray()));
     }
 
+    public void SetXSize(int x)
+    {
+        size.x = x;
+    }
+
+    public void SetZSize(int z)
+    {
+        size.z = z;
+    }
+
+    public float CheckNovelty(List<PureSlot> slots)
+    {
+        float novelty = 0f;
+        int walkablecount = 0;
+        Module previous = null;
+
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].module.isWalkable)
+            {
+                if (slots[i].module != previous)
+                {
+                    previous = slots[i].module;
+                    novelty++;
+                }
+                walkablecount++;
+            }
+
+        }
+        float result = (float)novelty / walkablecount;
+        return result;
+    }
 }

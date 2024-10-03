@@ -8,7 +8,7 @@ public class WFCMutation : MutationBase
     {
         if (RandomizationProvider.Current.GetDouble() <= probability)
         {
-            var indexes = RandomizationProvider.Current.GetUniqueInts(chromosome.Length/2, 0, chromosome.Length);
+            var indexes = RandomizationProvider.Current.GetUniqueInts(2, 0, chromosome.Length);
             foreach (var index in indexes)
             {
                 chromosome.ReplaceGene(index, chromosome.GenerateGene(index));

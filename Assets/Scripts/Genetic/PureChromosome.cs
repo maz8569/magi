@@ -8,7 +8,7 @@ public class PureChromosome : ChromosomeBase
     private List<Module> modules;
     private int mapSize;
 
-    public double Enclosement { get; internal set; }
+    public double Novelty { get; internal set; }
 
     public PureChromosome(List<Module> modules, int mapSize) : base(mapSize)
     {
@@ -19,7 +19,7 @@ public class PureChromosome : ChromosomeBase
 
         for( int i = 0; i < moduleIndexes.Length; i++)
         {
-            ReplaceGene(i, new Gene(modules[i]));
+            ReplaceGene(i, new Gene(modules[moduleIndexes[i]]));
         }
 
     }
@@ -38,7 +38,7 @@ public class PureChromosome : ChromosomeBase
     public override IChromosome Clone()
     {
         var clone = base.Clone() as PureChromosome;
-        clone.Enclosement = Enclosement;
+        clone.Novelty = Novelty;
 
         return clone;
     }

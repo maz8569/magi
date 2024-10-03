@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class PathfindingAgent : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PathfindingAgent : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 startPosition;
 
-    private bool isMoving = false;
+    public bool isMoving = false;
     private List<Vector3> positions;
     public int currentPos;
 

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/WFC_NEW.unity
+    guid: a00a04c32dd49da45a3ae1ddc64d615e
   m_configObjects: {}
